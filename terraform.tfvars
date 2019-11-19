@@ -3,7 +3,7 @@ aws_profile          = "emp_jungle"
 aws_region           = "eu-west-2"
 aws_credentials_file = "~/.aws/credentials"
 
-ec2_key_name = "otodorov"
+#ec2_key_name = "otodorov"
 custom_tags = {
   "Name" = "Challenge"
 }
