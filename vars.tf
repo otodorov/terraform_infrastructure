@@ -21,9 +21,6 @@ variable vpc_private_subnet_tags {}
 variable vpc_public_subnet_ip_ranges {}
 variable vpc_public_subnet_tags {}
 variable custom_tags {}
-variable vpc_tags {}
-variable environment {}
-variable project_name {}
 variable ec2_key_name {
   description = "Key pair name. This parameter is not required."
   type        = string

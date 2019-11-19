@@ -30,7 +30,7 @@ variable "internal" {
 variable "default_tags" {
   type = map(string)
   default = {
-    "Terraform" = "True"
+    "Terraform" = "true"
   }
 }
 

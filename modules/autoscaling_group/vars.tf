@@ -34,7 +34,7 @@ variable "default_tags" {
   default = [
     {
       key                 = "Terraform"
-      value               = "True"
+      value               = "true"
       propagate_at_launch = true
     },
   ]

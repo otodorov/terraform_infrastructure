@@ -6,7 +6,7 @@ data "aws_ip_ranges" "aws_region" {
 resource "aws_security_group" "elb" {
   vpc_id      = var.vpc_id
   name        = "${var.custom_tags["Name"]}-elb"
-  description = "security group that allows web to access app elb"
+  description = "security group that allows access for elb"
 
   dynamic "ingress" {
     for_each = var.elb_ingress
@@ -42,7 +42,7 @@ resource "aws_security_group" "elb" {
 resource "aws_security_group" "app" {
   vpc_id      = var.vpc_id
   name        = "${var.custom_tags["Name"]}-app"
-  description = "security group that allows web to access app elb"
+  description = "security group that allows access for Application servers"
 
   dynamic "ingress" {
     for_each = var.app_ingress
@@ -75,10 +75,46 @@ resource "aws_security_group" "app" {
   )
 }
 
+resource "aws_security_group" "efs" {
+  vpc_id      = var.vpc_id
+  name        = "${var.custom_tags["Name"]}-EFS"
+  description = "security group that allows EFS to access app servers"
+
+  dynamic "ingress" {
+    for_each = var.efs_ingress
+
+    content {
+      from_port   = ingress.value["from_port"]
+      to_port     = ingress.value["to_port"]
+      protocol    = ingress.value["protocol"]
+      description = ingress.value["description"]
+      cidr_blocks = flatten([ingress.value["cidr_blocks"]])
+    }
+  }
+
+  dynamic "egress" {
+    for_each = var.efs_egress
+
+    content {
+      from_port   = egress.value["from_port"]
+      to_port     = egress.value["to_port"]
+      protocol    = egress.value["protocol"]
+      description = egress.value["description"]
+      cidr_blocks = flatten([egress.value["cidr_blocks"]])
+    }
+  }
+
+  tags = merge(
+    var.default_tags,
+    var.custom_tags,
+    { "Name" = "${var.custom_tags["Name"]} EFS" },
+  )
+}
+
 resource "aws_security_group" "db" {
   vpc_id      = var.vpc_id
   name        = "${var.custom_tags["Name"]}-db"
-  description = "security group that allows app elb to access app"
+  description = "security group that allows application servers to db"
 
   dynamic "ingress" {
     for_each = var.db_ingress
