@@ -2,7 +2,7 @@ module "load_balancer_app_server" {
   source = "./modules/load_balancer"
 
   vpc_id            = module.vpc.vpc_id
-  elb_name          = "${var.custom_tags["Name"]}-app_server-ALB"
+  elb_name          = "${var.custom_tags["Name"]}-app-server-ALB"
   app_port          = "3000"
   app_protocol      = "HTTP"
   elb_port          = "443"
@@ -24,7 +24,7 @@ module "load_balancer_app_server" {
 module "autoscaling_group_app_server" {
   source = "./modules/autoscaling_group"
 
-  ec2_name           = "${var.custom_tags["Name"]}-app_server"
+  ec2_name           = "${var.custom_tags["Name"]}-app-server"
   ec2_ami_image      = "ami-08660f1c6fb6b01e7"
   ec2_instance_type  = "t2.micro"
   ec2_key_name       = var.ec2_key_name
