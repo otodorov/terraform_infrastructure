@@ -25,7 +25,7 @@ module "autoscaling_group_app_server" {
   source = "./modules/autoscaling_group"
 
   ec2_name           = "${var.custom_tags["Name"]}-app-server"
-  ec2_ami_image      = "ami-08660f1c6fb6b01e7"
+  ec2_ami_image      = "ami-00e8b55a2e841be44"
   ec2_instance_type  = "t2.micro"
   ec2_key_name       = var.ec2_key_name
   security_groups_id = [module.security_group.app_id]
