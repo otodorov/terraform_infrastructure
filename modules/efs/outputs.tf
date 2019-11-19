@@ -1,3 +1,3 @@
-output "asg_id" {
-  value = aws_autoscaling_group.app
+output "efs_id" {
+  value = aws_efs_mount_target.app
 }

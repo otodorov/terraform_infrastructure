@@ -41,3 +41,15 @@ module "autoscaling_group_app_server" {
   app_max_size        = 10
   health_check_period = 300
 }
+
+module "efs_app_server" {
+  source = "./modules/efs"
+
+  efs_name    = "${var.custom_tags["Name"]}-application-EFS"
+  custom_tags = var.custom_tags
+  app_subnets_id = [
+    module.vpc.private_subnets[0],
+    module.vpc.private_subnets[1],
+  ]
+  security_groups_id = [module.security_group.efs_id]
+}

@@ -1,5 +1,5 @@
 resource "aws_efs_file_system" "app" {
-  creation_token   = "${var.ec2_name}-application-EFS"
+  creation_token   = var.efs_name
   encrypted        = true
   performance_mode = "generalPurpose"
   throughput_mode  = "bursting"
@@ -12,10 +12,8 @@ resource "aws_efs_file_system" "app" {
 }
 
 resource "aws_efs_mount_target" "app" {
-  file_system_id = aws_efs_file_system.app.id
-  subnet_id = [
-    module.vpc.private_subnets[0],
-    module.vpc.private_subnets[1],
-  ]
-  security_groups = module.security_groups.efs
+  count           = length(var.app_subnets_id)
+  file_system_id  = aws_efs_file_system.app.id
+  subnet_id       = var.app_subnets_id[count.index]
+  security_groups = var.security_groups_id
 }
