@@ -34,4 +34,6 @@ variable "default_tags" {
   }
 }
 
-variable "custom_tags" {}
+variable "custom_tags" {
+  type = map(string)
+}
