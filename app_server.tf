@@ -8,9 +8,9 @@ module "load_balancer_app_server" {
   elb_port          = "443"
   elb_protocol      = "HTTPS"
   app_ASG_id        = module.autoscaling_group_app_server.asg_id
-  private_key       = "multidomain.gate.emerchantpay.net.key"
-  certificate_body  = "multidomain.gate.emerchantpay.net.crt"
-  certificate_chain = "multidomain.gate.emerchantpay.net.ca-bundle"
+  private_key       = "todorov_ltd.key"
+  certificate_body  = "todorov_ltd.crt"
+  certificate_chain = "letsencryptauthorityx3.pem"
 
   elb_subnets = flatten([
     module.vpc.private_subnets[0],
