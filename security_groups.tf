@@ -41,8 +41,10 @@ module "security_group" {
       to_port     = "3306"
       protocol    = "tcp"
       description = "Access to DB"
-      cidr_blocks = [var.vpc_private_subnet_ip_ranges[2],
-      var.vpc_private_subnet_ip_ranges[3]]
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges[2],
+        var.vpc_private_subnet_ip_ranges[3],
+      ]
     },
   ]
 
@@ -62,8 +64,10 @@ module "security_group" {
       to_port     = "0"
       protocol    = "-1"
       description = "EFS access to the application subnets."
-      cidr_blocks = [var.vpc_private_subnet_ip_ranges[2],
-      var.vpc_private_subnet_ip_ranges[3]]
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges[2],
+        var.vpc_private_subnet_ip_ranges[3],
+      ]
     },
   ]
 
@@ -83,7 +87,10 @@ module "security_group" {
       to_port     = "3009"
       protocol    = "tcp"
       description = "Application Port (thin). Access to local networks and the World"
-      cidr_blocks = [var.vpc_private_subnet_ip_ranges, "0.0.0.0/0"]
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges,
+        "0.0.0.0/0",
+      ]
     },
   ]
 
@@ -93,8 +100,10 @@ module "security_group" {
       to_port     = "11211"
       protocol    = "tcp"
       description = "ElastiCache access from the application subnets"
-      cidr_blocks = [var.vpc_private_subnet_ip_ranges[0],
-      var.vpc_private_subnet_ip_ranges[1]]
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges[0],
+        var.vpc_private_subnet_ip_ranges[1],
+      ]
     },
   ]
 
@@ -104,8 +113,10 @@ module "security_group" {
       to_port     = "0"
       protocol    = "-1"
       description = "ElastiCache access to the application subnets"
-      cidr_blocks = [var.vpc_private_subnet_ip_ranges[0],
-      var.vpc_private_subnet_ip_ranges[1]]
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges[0],
+        var.vpc_private_subnet_ip_ranges[1],
+      ]
     },
   ]
 
@@ -115,8 +126,10 @@ module "security_group" {
       to_port     = "3306"
       protocol    = "tcp"
       description = "DB access from the application subnets."
-      cidr_blocks = [var.vpc_private_subnet_ip_ranges[0],
-      var.vpc_private_subnet_ip_ranges[1]]
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges[0],
+        var.vpc_private_subnet_ip_ranges[1],
+      ]
     },
   ]
 
@@ -126,8 +139,10 @@ module "security_group" {
       to_port     = "0"
       protocol    = "-1"
       description = "DB access to the application subnets."
-      cidr_blocks = [var.vpc_private_subnet_ip_ranges[0],
-      var.vpc_private_subnet_ip_ranges[1]]
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges[0],
+        var.vpc_private_subnet_ip_ranges[1],
+      ]
     },
   ]
 }
