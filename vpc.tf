@@ -10,5 +10,4 @@ module "vpc" {
   vpc_private_subnet_tags      = var.vpc_private_subnet_tags
   vpc_private_subnet_ip_ranges = var.vpc_private_subnet_ip_ranges
   custom_tags                  = var.custom_tags
-  vpc_tags                     = var.vpc_tags
 }

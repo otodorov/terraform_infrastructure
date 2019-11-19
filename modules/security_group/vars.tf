@@ -51,3 +51,11 @@ variable "db_ingress" {
 variable "db_egress" {
   type = list
 }
+
+variable "efs_ingress" {
+  type = list
+}
+
+variable "efs_egress" {
+  type = list
+}

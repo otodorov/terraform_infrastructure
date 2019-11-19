@@ -27,12 +27,6 @@ variable "custom_tags" {
   default     = {}
 }
 
-variable "vpc_tags" {
-  description = "Custom tags for all recources"
-  type        = map
-  default     = {}
-}
-
 variable "vpc_availability_zones" {
   description = "AWS Availability Zones"
   type        = list
