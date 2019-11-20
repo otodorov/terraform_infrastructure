@@ -26,3 +26,13 @@ variable ec2_key_name {
   type        = string
   default     = ""
 }
+variable ec2_attach_role {
+  type        = list(string)
+  description = "IAM Role for Application EC2 Instances"
+  default = [
+    "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM",
+    "arn:aws:iam::aws:policy/AmazonSSMFullAccess",
+    "arn:aws:iam::aws:policy/AmazonElastiCacheFullAccess",
+    "arn:aws:iam::aws:policy/AmazonRDSDataFullAccess",
+  ]
+}
