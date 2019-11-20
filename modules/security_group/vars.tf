@@ -1,61 +1,61 @@
-variable "aws_region" {}
-variable "vpc_id" {}
-variable "default_tags" {
+variable aws_region {}
+variable vpc_id {}
+variable default_tags {
   type = map(string)
   default = {
     "Terraform" = "true"
   }
 }
 
-variable "custom_tags" {
+variable custom_tags {
   description = "Custom tags for all recources"
   type        = map(string)
 }
 
-variable "elb_ingress" {
+variable elb_ingress {
   type = list
 }
 
-variable "elb_egress" {
+variable elb_egress {
   type = list
 }
 
-variable "app_ingress" {
+variable app_ingress {
   type = list
 }
 
-variable "app_egress" {
+variable app_egress {
   type = list
 }
 
-variable "cloud_front_ingress" {
+variable cloud_front_ingress {
   type = list
 }
 
-variable "cloud_front_egress" {
+variable cloud_front_egress {
   type = list
 }
 
-variable "elasticache_ingress" {
+variable elasticache_ingress {
   type = list
 }
 
-variable "elasticache_egress" {
+variable elasticache_egress {
   type = list
 }
 
-variable "db_ingress" {
+variable db_ingress {
   type = list
 }
 
-variable "db_egress" {
+variable db_egress {
   type = list
 }
 
-variable "efs_ingress" {
+variable efs_ingress {
   type = list
 }
 
-variable "efs_egress" {
+variable efs_egress {
   type = list
 }
