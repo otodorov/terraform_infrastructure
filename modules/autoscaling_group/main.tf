@@ -3,16 +3,18 @@ data "template_file" "user_data" {
 
   vars = {
     custom_hostname = var.custom_tags["Name"]
+    efs_id          = var.efs_id
   }
 }
 
 resource "aws_launch_configuration" "app" {
-  name_prefix     = "${var.ec2_name}-"
-  image_id        = var.ec2_ami_image
-  instance_type   = var.ec2_instance_type
-  key_name        = var.ec2_key_name
-  user_data       = data.template_file.user_data.rendered
-  security_groups = var.security_groups_id
+  name_prefix          = "${var.ec2_name}-"
+  image_id             = var.ec2_ami_image
+  instance_type        = var.ec2_instance_type
+  key_name             = var.ec2_key_name
+  user_data            = data.template_file.user_data.rendered
+  security_groups      = var.security_groups_id
+  iam_instance_profile = var.ec2_iam_role
 
   lifecycle {
     create_before_destroy = true
