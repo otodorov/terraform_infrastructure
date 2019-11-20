@@ -5,7 +5,7 @@ sudo yum install -y amazon-efs-utils || \
   sudo yum install -y nfs-utils || \
   sudo apt-get install nfs-common
 efs_id="${efs_id}"
-moun_point="/mnt/efs"
-sudo mkdir ${moun_point}
-sudo mount -t efs -o tls $efs_id:/ ${moun_point}
-sudo echo ${efs_id}:/ ${moun_point} efs defaults,_netdev 0 0 >> /etc/fstab
+efs_mount_point="${efs_mount_point}"
+sudo mkdir ${efs_mount_point}
+sudo mount -t efs -o tls $efs_id:/ ${efs_mount_point}
+sudo echo ${efs_id}:/ ${efs_mount_point} efs defaults,_netdev 0 0 >> /etc/fstab

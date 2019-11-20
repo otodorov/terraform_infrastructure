@@ -9,6 +9,7 @@ module "autoscaling_group_app_server" {
   custom_tags        = var.custom_tags
   efs_id             = module.efs.efs_id
   ec2_iam_role       = aws_iam_instance_profile.AmazonEC2ApplicationRole.name
+  efs_mount_point    = "/mnt/efs"
 
   app_subnets_id = [
     module.vpc.private_subnets[0],

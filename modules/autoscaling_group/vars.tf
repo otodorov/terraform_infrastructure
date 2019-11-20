@@ -4,6 +4,7 @@ variable app_min_size {}
 variable app_max_size {}
 variable health_check_period {}
 variable efs_id {}
+variable efs_mount_point {}
 variable ec2_iam_role {}
 
 variable ec2_name {

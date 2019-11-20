@@ -4,6 +4,7 @@ data "template_file" "user_data" {
   vars = {
     custom_hostname = var.custom_tags["Name"]
     efs_id          = var.efs_id
+    efs_mount_point = var.efs_mount_point
   }
 }
 
