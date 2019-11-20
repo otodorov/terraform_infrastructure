@@ -1,4 +1,4 @@
-resource "aws_efs_file_system" "app" {
+resource "aws_efs_file_system" "efs" {
   creation_token   = var.efs_name
   encrypted        = true
   performance_mode = "generalPurpose"
@@ -11,9 +11,9 @@ resource "aws_efs_file_system" "app" {
   )
 }
 
-resource "aws_efs_mount_target" "app" {
+resource "aws_efs_mount_target" "efs" {
   count           = length(var.app_subnets_id)
-  file_system_id  = aws_efs_file_system.app.id
+  file_system_id  = aws_efs_file_system.efs.id
   subnet_id       = var.app_subnets_id[count.index]
   security_groups = var.security_groups_id
 }
