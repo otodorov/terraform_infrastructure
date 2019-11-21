@@ -46,6 +46,13 @@ module "security_group" {
         var.vpc_private_subnet_ip_ranges[3],
       ]
     },
+    {
+      from_port   = "443"
+      to_port     = "443"
+      protocol    = "tcp"
+      description = "Outbound traffic for SSM"
+      cidr_blocks = ["0.0.0.0/0"]
+    },
   ]
 
   efs_ingress = [
