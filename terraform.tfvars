@@ -30,4 +30,4 @@ vpc_private_subnet_tags = [
   { "Name" = "challenge_db_B" },
 ]
 
-vpc_availability_zones = ["a", "b"]
+vpc_availability_zones = ["eu-west-2a", "eu-west-2b"]
