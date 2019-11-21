@@ -16,7 +16,7 @@ module "autoscaling_group_app_server" {
     module.vpc.private_subnets[1],
   ]
 
-  load_balancer_arn   = module.load_balancer_app_server.load_balancer_arn
+  load_balancer_arn   = module.load_balancer_app_server.arn
   app_min_size        = 2
   app_max_size        = 10
   health_check_period = 300

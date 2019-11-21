@@ -20,3 +20,7 @@ module "load_balancer_app_server" {
   internal           = true
   custom_tags        = var.custom_tags
 }
+
+output "LoadBalancer-DNS" {
+  value = module.load_balancer_app_server.dns_name
+}
