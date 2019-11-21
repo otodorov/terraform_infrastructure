@@ -22,7 +22,7 @@ resource "aws_subnet" "public_subnets" {
   vpc_id            = aws_vpc.vpc.id
   count             = length(var.vpc_public_subnet_ip_ranges)
   cidr_block        = var.vpc_public_subnet_ip_ranges[count.index]
-  availability_zone = "${var.aws_region}${var.vpc_availability_zones[count.index % length(var.vpc_availability_zones)]}"
+  availability_zone = var.vpc_availability_zones[count.index % length(var.vpc_availability_zones)]
   tags = merge(
     var.default_tags,
     var.custom_tags,
@@ -34,7 +34,7 @@ resource "aws_subnet" "private_subnets" {
   vpc_id            = aws_vpc.vpc.id
   count             = length(var.vpc_private_subnet_ip_ranges)
   cidr_block        = var.vpc_private_subnet_ip_ranges[count.index]
-  availability_zone = "${var.aws_region}${var.vpc_availability_zones[count.index % length(var.vpc_availability_zones)]}"
+  availability_zone = var.vpc_availability_zones[count.index % length(var.vpc_availability_zones)]
   tags = merge(
     var.default_tags,
     var.custom_tags,
@@ -74,7 +74,7 @@ resource "aws_route_table" "vpc_private_route_tables" {
   tags = merge(
     var.default_tags,
     var.custom_tags,
-    { "Name" = "${var.custom_tags["Name"]}-private-route-${var.vpc_availability_zones[count.index]}" },
+    { "Name" = "${var.custom_tags["Name"]}-private-route-${substr(var.vpc_availability_zones[count.index], -1, 0)}" },
   )
 }
 
@@ -105,7 +105,7 @@ resource "aws_eip" "nat_eip" {
   tags = merge(
     var.default_tags,
     var.custom_tags,
-    { "Name" = "${var.custom_tags["Name"]} EIP for AZ-${var.vpc_availability_zones[count.index]}" },
+    { "Name" = "${var.custom_tags["Name"]} EIP for AZ-${substr(var.vpc_availability_zones[count.index], -1, 0)}" },
   )
 }
 
@@ -116,7 +116,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   tags = merge(
     var.default_tags,
     var.custom_tags,
-    { "Name" = "${var.custom_tags["Name"]}-NAT_GW-${var.vpc_availability_zones[count.index]}" },
+    { "Name" = "${var.custom_tags["Name"]}-NAT_GW-${substr(var.vpc_availability_zones[count.index], -1, 0)}" },
   )
 }
 
