@@ -10,6 +10,8 @@ module "elasticache_app_server" {
   elasticache_instance_type      = "cache.t2.micro"
   elasticache_security_groups_id = module.security_group.elasticache_id
   vpc_availability_zones         = var.vpc_availability_zones
+  backup_window                  = "07:00-09:00"
+  backup_retention_period        = 5
 
   db_subnets = [
     module.vpc.private_subnets[2],

@@ -6,6 +6,8 @@ variable parameter_group_name {}
 variable elasticache_port {}
 variable cluster_id {}
 variable engine_version {}
+variable backup_window {}
+variable backup_retention_period {}
 
 variable db_subnets {
   type = list(string)

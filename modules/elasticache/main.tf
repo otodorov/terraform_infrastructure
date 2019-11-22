@@ -24,5 +24,7 @@ resource "aws_elasticache_replication_group" "elasticache" {
   port                          = var.elasticache_port
   subnet_group_name             = aws_elasticache_subnet_group.elasticache.name
   security_group_ids            = [var.elasticache_security_groups_id]
+  snapshot_window               = var.backup_window
+  snapshot_retention_limit      = var.backup_retention_period
   tags                          = merge(var.default_tags, var.custom_tags, { "Name" = var.cluster_id })
 }
