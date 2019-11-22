@@ -17,6 +17,8 @@ The subnets are split as follow:
 The Load Balancer listen on port 443 and will forward the traffic to instances in the AutoScaling group on port 3000 (I assume this will be the application port)
 5) EFS mount points which are mounted on every ec2 instances to keep any static content.
 6) RDS Aurora cluster with 2 DB instances (One per AZ for Multi-AZ)
+7) Elasticahsed (Redis) cluster to keep application sesions.
+8) CloudFront to server static and dynamic data.
 
 Every ec2 instance has attached IAM role to allow certain permissions. The IAM role `AmazonEC2RoleforSSM` is also attached, so you can connect to any of the ec2 instances via AWS Console.
 
