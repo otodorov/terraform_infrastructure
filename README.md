@@ -22,8 +22,11 @@ Every ec2 instance has attached IAM role to allow certain permissions. The IAM r
 
 Every service is written as a module.
 The base variables which are used for all of the services are in [terraform.tfvars](./terraform.tfvars)
-The variables which are specific per service are in files [vpc.tf](./vpc.tf), [app_load_balancer.tf](./app_load_balancer.tf), [app_efs.tf](./app_efs.tf), [security_groups.tf](./security_groups.tf), [app_autoscaling.tf](./app_autoscaling.tf), [app_rds.tf](./app_rds.tf)
+The variables which are specific per service are in files [vpc.tf](./vpc.tf), [app_load_balancer.tf](./app_load_balancer.tf), [app_efs.tf](./app_efs.tf), [security_groups.tf](./security_groups.tf), [app_autoscaling.tf](./app_autoscaling.tf), [app_rds.tf](./app_rds.tf), [app_elasticache.tf](./app_elasticache.tf), [app_cloudfront.tf](./app_cloudfront.tf)
 
+
+### Topology diagram
+![Endava Devops Challenge](./images/Challenge.png)
 
 ### How to use this code.
 1) Setup your AWS credentials [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
