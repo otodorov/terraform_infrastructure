@@ -11,14 +11,17 @@ variable db_subnets {
   type = list(string)
 }
 
-variable private_subnets_ids {
-  type = list(string)
-}
-
-variable aws_availability_zones {
+variable vpc_availability_zones {
   type = list(string)
 }
 
 variable default_tags {
+  type = map(string)
+  default = {
+    "Terraform" = "true"
+  }
+}
+
+variable custom_tags {
   type = map(string)
 }
