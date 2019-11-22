@@ -61,7 +61,10 @@ module "security_group" {
       to_port     = "2049"
       protocol    = "tcp"
       description = "EFS access from the application subnets."
-      cidr_blocks = var.vpc_private_subnet_ip_ranges
+      cidr_blocks = [
+        var.vpc_private_subnet_ip_ranges[0],
+        var.vpc_private_subnet_ip_ranges[1],
+      ]
     },
   ]
 
@@ -72,8 +75,8 @@ module "security_group" {
       protocol    = "-1"
       description = "EFS access to the application subnets."
       cidr_blocks = [
-        var.vpc_private_subnet_ip_ranges[2],
-        var.vpc_private_subnet_ip_ranges[3],
+        var.vpc_private_subnet_ip_ranges[0],
+        var.vpc_private_subnet_ip_ranges[1],
       ]
     },
   ]
