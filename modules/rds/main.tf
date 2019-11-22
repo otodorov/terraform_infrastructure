@@ -14,7 +14,8 @@ resource "aws_rds_cluster" "rds" {
   db_subnet_group_name      = aws_db_subnet_group.rds.name
   storage_encrypted         = true
   skip_final_snapshot       = false
-  final_snapshot_identifier = "${lower(var.rds_name)}-cluster-final-snapshot"
+  #final_snapshot_identifier = "${lower(var.rds_name)}-cluster-final-snapshot"
+  final_snapshot_identifier = "${lower(var.db_name)}-cluster-final-snapshot-${formatdate("DDMMMYYYYhhmmss", timestamp())}"
 
   tags = merge(var.default_tags, var.custom_tags, { "Name" = var.rds_name })
 
