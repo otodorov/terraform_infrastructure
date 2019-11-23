@@ -1,4 +1,4 @@
-# Endava Devops Challenge
+# The Devops Challenge
 
 ## Task description
 1) Create public git repository

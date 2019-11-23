@@ -1,5 +1,5 @@
-### Endava Devops Challenge
-[Task description](./Challenge.md#endava-devops-challenge)
+### The Devops Challenge
+[Task description](./Challenge.md#the-devops-challenge)
 ### Description
 
 This Terraform Code will create:
@@ -30,7 +30,7 @@ The variables which are specific per service are in files [vpc.tf](./vpc.tf), [a
 
 
 ### Topology diagram
-![Endava Devops Challenge](./images/Challenge.png)
+![The Devops Challenge](./images/Challenge.png)
 
 ### How to use this code.
 1) Setup your AWS credentials [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
